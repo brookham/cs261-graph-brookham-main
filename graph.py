@@ -22,8 +22,9 @@ class Graph:
 
         
     def neighbors(self, vert):
-        if len(self.data) <= 1:
-            return []
+        if vert in self.data:
+            return self.data[vert]
+        return []
 
     def add_vertex(self, key):
         if key in self.data:
