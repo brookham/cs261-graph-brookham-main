@@ -16,4 +16,7 @@ class Graph:
         if self.data == None:
             return False
         
-    
+    def neighbors(self, vert):
+        neighbor_lst = []
+        
+        return neighbor_lst
