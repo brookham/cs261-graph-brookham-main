@@ -20,3 +20,6 @@ class Graph:
         neighbor_lst = []
         
         return neighbor_lst
+
+    def add_vertex(self, key):
+        self.data[key] = []
