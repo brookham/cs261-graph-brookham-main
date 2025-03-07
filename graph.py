@@ -15,11 +15,15 @@ class Graph:
     def adjacent(self, vert1, vert2):
         if len(self.data) <= 1:
             return False
+        if vert1 in self.data:
+            return vert2 in self.data[vert1]
+
+
+
         
     def neighbors(self, vert):
-        neighbor_lst = []
         if len(self.data) <= 1:
-            return neighbor_lst
+            return []
 
     def add_vertex(self, key):
         if key in self.data:
