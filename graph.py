@@ -28,7 +28,10 @@ class Graph:
             self.data[key] = []
 
     def remove_vertex(self, key):
-        pass
+        if key not in self.data:
+            pass
+        else:
+            del self.data[key]
 
     def add_edge(self, vert1, vert2):
         pass
