@@ -13,13 +13,13 @@ class Graph:
         self.data = {}
 
     def adjacent(self, vert1, vert2):
-        if self.data == None:
+        if len(self.data) <= 1:
             return False
         
     def neighbors(self, vert):
         neighbor_lst = []
-        
-        return neighbor_lst
+        if len(self.data) <= 1:
+            return neighbor_lst
 
     def add_vertex(self, key):
         self.data[key] = []
