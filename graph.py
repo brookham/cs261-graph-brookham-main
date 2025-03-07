@@ -22,7 +22,10 @@ class Graph:
             return neighbor_lst
 
     def add_vertex(self, key):
-        self.data[key] = []
+        if key in self.data:
+            pass
+        else:
+            self.data[key] = []
 
     def remove_vertex(self, key):
         pass
