@@ -23,3 +23,12 @@ class Graph:
 
     def add_vertex(self, key):
         self.data[key] = []
+
+    def remove_vertex(self, key):
+        pass
+
+    def add_edge(self, vert1, vert2):
+        pass
+
+    def remove_edge(self, vert1, vert2):
+        pass
