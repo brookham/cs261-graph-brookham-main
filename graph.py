@@ -13,5 +13,7 @@ class Graph:
         self.data = {}
 
     def adjacent(self, vert1, vert2):
-        if vert1 and vert2 == None:
+        if self.data == None:
             return False
+        
+    
