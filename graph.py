@@ -38,4 +38,5 @@ class Graph:
             pass
 
     def remove_edge(self, vert1, vert2):
-        pass
+        if not vert1 or vert2 in self.data:
+            pass
