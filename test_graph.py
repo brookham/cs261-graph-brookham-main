@@ -29,16 +29,16 @@ class TestGraph(unittest.TestCase):
         g = Graph()
         self.assertEqual(dict, type(g.data))
 
-    # """
-    # Empty graphs.
-    # """
+    """
+    Empty graphs.
+    """
 
-    # def test_adjacent_empty(self):
-    #     """
-    #     Test 3: An empty graph has no vertices, so adjacent returns false.
-    #     """
-    #     g = Graph()
-    #     self.assertFalse(g.adjacent('A', 'B'))
+    def test_adjacent_empty(self):
+        """
+        Test 3: An empty graph has no vertices, so adjacent returns false.
+        """
+        g = Graph()
+        self.assertFalse(g.adjacent('A', 'B'))
 
     # def test_neighbors_empty(self):
     #     """

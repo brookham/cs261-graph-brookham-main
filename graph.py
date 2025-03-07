@@ -10,4 +10,8 @@ import functools
 
 class Graph:
     def __init__(self):
-         self.data = {}
+        self.data = {}
+
+    def adjacent(self, vert1, vert2):
+        if vert1 and vert2 == None:
+            return False
