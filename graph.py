@@ -18,9 +18,6 @@ class Graph:
         if vert1 in self.data:
             return vert2 in self.data[vert1]
 
-
-
-        
     def neighbors(self, vert):
         if vert in self.data:
             return self.data[vert]
@@ -37,10 +34,17 @@ class Graph:
             pass
         else:
             del self.data[key]
+            for vert in self.data:
+                if key in self.data[vert]:
+                    self.data[vert].remove(key)
+            return self.data
 
     def add_edge(self, vert1, vert2):
         if not vert1 or vert2 in self.data:
             pass
+        if vert1 and vert2 in self.data:
+            self.data[vert1].append(vert2)
+            self.data[vert2].append(vert1)
 
     def remove_edge(self, vert1, vert2):
         if not vert1 or vert2 in self.data:

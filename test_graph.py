@@ -194,45 +194,45 @@ class TestGraph(unittest.TestCase):
         self.assertEqual(['A'], g.neighbors('B'))
         self.assertEqual([], g.neighbors('FAKE'))
 
-    # def test_remove_vertex_two(self):
-    #     """
-    #     Test 18: Removing a vertex also removes it from all vertex neighbors lists.
-    #     """
-    #     g = Graph()
-    #     g.data['A'] = ['B']
-    #     g.data['B'] = ['A']
-    #     g.remove_vertex('A')
-    #     self.assertRaises(KeyError, operator.itemgetter('A'), g.data)
-    #     self.assertEqual([], g.data['B'])
+    def test_remove_vertex_two(self):
+        """
+        Test 18: Removing a vertex also removes it from all vertex neighbors lists.
+        """
+        g = Graph()
+        g.data['A'] = ['B']
+        g.data['B'] = ['A']
+        g.remove_vertex('A')
+        self.assertRaises(KeyError, operator.itemgetter('A'), g.data)
+        self.assertEqual([], g.data['B'])
 
-    # def test_add_edge_two(self):
-    #     """
-    #     Test 19: Adding an edge between two vertices adds each vertex to both of their
-    #     neighbor lists.
-    #     """
-    #     g = Graph()
-    #     g.data['A'] = []
-    #     g.data['B'] = []
-    #     g.add_edge('A', 'B')
-    #     self.assertEqual(['B'], g.data['A'])
-    #     self.assertEqual(['A'], g.data['B'])
-    #     g.data['A'] = []
-    #     g.data['B'] = []
-    #     g.add_edge('B', 'A')
-    #     self.assertEqual(['B'], g.data['A'])
-    #     self.assertEqual(['A'], g.data['B'])
+    def test_add_edge_two(self):
+        """
+        Test 19: Adding an edge between two vertices adds each vertex to both of their
+        neighbor lists.
+        """
+        g = Graph()
+        g.data['A'] = []
+        g.data['B'] = []
+        g.add_edge('A', 'B')
+        self.assertEqual(['B'], g.data['A'])
+        self.assertEqual(['A'], g.data['B'])
+        g.data['A'] = []
+        g.data['B'] = []
+        g.add_edge('B', 'A')
+        self.assertEqual(['B'], g.data['A'])
+        self.assertEqual(['A'], g.data['B'])
 
-    # def test_add_edge_existing_two(self):
-    #     """
-    #     Test 20: Adding an edge to vertices that already share and edge does not create a
-    #     second edge.
-    #     """
-    #     g = Graph()
-    #     g.data['A'] = ['B']
-    #     g.data['B'] = ['A']
-    #     g.add_edge('A', 'B')
-    #     self.assertEqual(['B'], g.data['A'])
-    #     self.assertEqual(['A'], g.data['B'])
+    def test_add_edge_existing_two(self):
+        """
+        Test 20: Adding an edge to vertices that already share and edge does not create a
+        second edge.
+        """
+        g = Graph()
+        g.data['A'] = ['B']
+        g.data['B'] = ['A']
+        g.add_edge('A', 'B')
+        self.assertEqual(['B'], g.data['A'])
+        self.assertEqual(['A'], g.data['B'])
 
     # def test_remove_edge_two(self):
     #     """
