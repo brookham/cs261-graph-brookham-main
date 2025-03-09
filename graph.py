@@ -43,8 +43,13 @@ class Graph:
         if not vert1 or vert2 in self.data:
             pass
         if vert1 and vert2 in self.data:
-            self.data[vert1].append(vert2)
-            self.data[vert2].append(vert1)
+            if vert1 not in self.data[vert2]:
+                self.data[vert2].append(vert1)
+            if vert2 not in self.data[vert1]:
+                self.data[vert1].append(vert2)
+
+        else:
+            pass
 
     def remove_edge(self, vert1, vert2):
         if not vert1 or vert2 in self.data:
