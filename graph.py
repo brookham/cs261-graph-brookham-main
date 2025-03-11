@@ -12,6 +12,10 @@ class Graph:
     def __init__(self):
         self.data = {}
 
+    def edge(self, vert1, vert2):
+        if (vert1 in self.data[vert2]) and (vert2 in self.data[vert1]):
+            return True
+
     def adjacent(self, vert1, vert2):
         if len(self.data) <= 1:
             return False
@@ -52,5 +56,14 @@ class Graph:
             pass
 
     def remove_edge(self, vert1, vert2):
-        if not vert1 or vert2 in self.data:
+        if vert1 and vert2 in self.data:
+            if vert1 in self.data[vert2] and vert2 in self.data[vert1]:
+                self.data[vert1].remove(vert2)
+                self.data[vert2].remove(vert1)
             pass
+
+    def v(self):
+        return len(self.data)
+    
+    def e(self):
+        

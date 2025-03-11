@@ -234,141 +234,141 @@ class TestGraph(unittest.TestCase):
         self.assertEqual(['B'], g.data['A'])
         self.assertEqual(['A'], g.data['B'])
 
-    # def test_remove_edge_two(self):
-    #     """
-    #     Test 21: Removing an edge between two vertices removes each vertex from both
-    #     neighbors lists.
-    #     """
-    #     g = Graph()
-    #     g.data['A'] = ['B']
-    #     g.data['B'] = ['A']
-    #     g.remove_edge('A', 'B')
-    #     self.assertEqual([], g.data['A'])
-    #     self.assertEqual([], g.data['B'])
-    #     g.data['A'] = ['B']
-    #     g.data['B'] = ['A']
-    #     g.remove_edge('B', 'A')
-    #     self.assertEqual([], g.data['A'])
-    #     self.assertEqual([], g.data['B'])
+    def test_remove_edge_two(self):
+        """
+        Test 21: Removing an edge between two vertices removes each vertex from both
+        neighbors lists.
+        """
+        g = Graph()
+        g.data['A'] = ['B']
+        g.data['B'] = ['A']
+        g.remove_edge('A', 'B')
+        self.assertEqual([], g.data['A'])
+        self.assertEqual([], g.data['B'])
+        g.data['A'] = ['B']
+        g.data['B'] = ['A']
+        g.remove_edge('B', 'A')
+        self.assertEqual([], g.data['A'])
+        self.assertEqual([], g.data['B'])
 
-    # def test_remove_edge_nonexisting_two(self):
-    #     """
-    #     Test 22: Removing an edge that does not exist does nothing.
-    #     """
-    #     g = Graph()
-    #     g.data['A'] = ['FAKE']
-    #     g.data['B'] = ['FAKE 2']
-    #     g.remove_edge('A', 'B')
-    #     g.remove_edge('B', 'A')
-    #     self.assertEqual(['FAKE'], g.data['A'])
-    #     self.assertEqual(['FAKE 2'], g.data['B'])
+    def test_remove_edge_nonexisting_two(self):
+        """
+        Test 22: Removing an edge that does not exist does nothing.
+        """
+        g = Graph()
+        g.data['A'] = ['FAKE']
+        g.data['B'] = ['FAKE 2']
+        g.remove_edge('A', 'B')
+        g.remove_edge('B', 'A')
+        self.assertEqual(['FAKE'], g.data['A'])
+        self.assertEqual(['FAKE 2'], g.data['B'])
 
-    # """
-    # Larger graphs
-    # """
+    """
+    Larger graphs
+    """
 
-    # def test_adjacent(self):
-    #     """
-    #     Test 23: Two vertices are adjacent if they share an edge.
-    #     """
-    #     g = larger_graph()
-    #     self.assertTrue(g.adjacent('A', 'B'))
-    #     self.assertTrue(g.adjacent('B', 'A'))
-    #     self.assertTrue(g.adjacent('A', 'C'))
-    #     self.assertTrue(g.adjacent('C', 'A'))
-    #     self.assertTrue(g.adjacent('A', 'D'))
-    #     self.assertTrue(g.adjacent('D', 'A'))
-    #     self.assertTrue(g.adjacent('B', 'C'))
-    #     self.assertTrue(g.adjacent('C', 'B'))
-    #     self.assertFalse(g.adjacent('B', 'D'))
-    #     self.assertFalse(g.adjacent('D', 'B'))
-    #     self.assertFalse(g.adjacent('C', 'D'))
-    #     self.assertFalse(g.adjacent('D', 'C'))
+    def test_adjacent(self):
+        """
+        Test 23: Two vertices are adjacent if they share an edge.
+        """
+        g = larger_graph()
+        self.assertTrue(g.adjacent('A', 'B'))
+        self.assertTrue(g.adjacent('B', 'A'))
+        self.assertTrue(g.adjacent('A', 'C'))
+        self.assertTrue(g.adjacent('C', 'A'))
+        self.assertTrue(g.adjacent('A', 'D'))
+        self.assertTrue(g.adjacent('D', 'A'))
+        self.assertTrue(g.adjacent('B', 'C'))
+        self.assertTrue(g.adjacent('C', 'B'))
+        self.assertFalse(g.adjacent('B', 'D'))
+        self.assertFalse(g.adjacent('D', 'B'))
+        self.assertFalse(g.adjacent('C', 'D'))
+        self.assertFalse(g.adjacent('D', 'C'))
 
-    # def test_neighbors(self):
-    #     """
-    #     Test 24: Vertices that share an edge are neighbors.
-    #     """
-    #     g = larger_graph()
-    #     self.assertEqual(['B', 'C', 'D'], g.neighbors('A'))
-    #     self.assertEqual(['A', 'C'], g.neighbors('B'))
-    #     self.assertEqual(['A', 'B'], g.neighbors('C'))
-    #     self.assertEqual(['A'], g.neighbors('D'))
+    def test_neighbors(self):
+        """
+        Test 24: Vertices that share an edge are neighbors.
+        """
+        g = larger_graph()
+        self.assertEqual(['B', 'C', 'D'], g.neighbors('A'))
+        self.assertEqual(['A', 'C'], g.neighbors('B'))
+        self.assertEqual(['A', 'B'], g.neighbors('C'))
+        self.assertEqual(['A'], g.neighbors('D'))
 
-    # def test_add_vertex(self):
-    #     """
-    #     Test 25: Adding a vertex to a graph only creates a new entry in the adjacency list.
-    #     """
-    #     g = larger_graph()
-    #     g.add_vertex('E')
-    #     self.assertEqual([], g.data['E'])
-    #     self.assertEqual(['B', 'C', 'D'], g.data['A'])
-    #     self.assertEqual(['A', 'C'], g.data['B'])
-    #     self.assertEqual(['A', 'B'], g.data['C'])
-    #     self.assertEqual(['A'], g.data['D'])
+    def test_add_vertex(self):
+        """
+        Test 25: Adding a vertex to a graph only creates a new entry in the adjacency list.
+        """
+        g = larger_graph()
+        g.add_vertex('E')
+        self.assertEqual([], g.data['E'])
+        self.assertEqual(['B', 'C', 'D'], g.data['A'])
+        self.assertEqual(['A', 'C'], g.data['B'])
+        self.assertEqual(['A', 'B'], g.data['C'])
+        self.assertEqual(['A'], g.data['D'])
 
-    # def test_remove_vertex(self):
-    #     """
-    #     Test 26: Removing a vertex also removes its edges.
-    #     Hint: Be efficient. Traversing all the vertices (keys) is inefficient.
-    #     """
-    #     g = larger_graph()
-    #     g.remove_vertex('A')
-    #     self.assertEqual(['C'], g.data['B'])
-    #     self.assertEqual(['B'], g.data['C'])
-    #     self.assertEqual([], g.data['D'])
+    def test_remove_vertex(self):
+        """
+        Test 26: Removing a vertex also removes its edges.
+        Hint: Be efficient. Traversing all the vertices (keys) is inefficient.
+        """
+        g = larger_graph()
+        g.remove_vertex('A')
+        self.assertEqual(['C'], g.data['B'])
+        self.assertEqual(['B'], g.data['C'])
+        self.assertEqual([], g.data['D'])
 
-    # def test_add_edge(self):
-    #     """
-    #     Test 27: Adding an edge between two vertices connects them as adjacent neighbors.
-    #     """
-    #     g = larger_graph()
-    #     g.add_edge('D', 'B')
-    #     self.assertEqual(['A', 'C', 'D'], g.data['B'])
-    #     self.assertEqual(['A', 'B'], g.data['D'])
-    #     self.assertTrue(g.adjacent('B', 'D'))
-    #     self.assertTrue(g.adjacent('D', 'B'))
-    #     self.assertEqual(['B', 'C', 'D'], g.data['A'])
-    #     self.assertEqual(['A', 'B'], g.data['C'])
+    def test_add_edge(self):
+        """
+        Test 27: Adding an edge between two vertices connects them as adjacent neighbors.
+        """
+        g = larger_graph()
+        g.add_edge('D', 'B')
+        self.assertEqual(['A', 'C', 'D'], g.data['B'])
+        self.assertEqual(['A', 'B'], g.data['D'])
+        self.assertTrue(g.adjacent('B', 'D'))
+        self.assertTrue(g.adjacent('D', 'B'))
+        self.assertEqual(['B', 'C', 'D'], g.data['A'])
+        self.assertEqual(['A', 'B'], g.data['C'])
 
-    # def test_remove_edge(self):
-    #     """
-    #     Test 28: Removing an edge disconnects two vertices.
-    #     """
-    #     g = larger_graph()
-    #     g.remove_edge('A', 'B')
-    #     self.assertEqual(['C', 'D'], g.data['A'])
-    #     self.assertEqual(['C'], g.data['B'])
-    #     self.assertFalse(g.adjacent('A', 'B'))
-    #     self.assertFalse(g.adjacent('B', 'A'))
-    #     self.assertEqual(['A', 'B'], g.data['C'])
-    #     self.assertEqual(['A'], g.data['D'])
+    def test_remove_edge(self):
+        """
+        Test 28: Removing an edge disconnects two vertices.
+        """
+        g = larger_graph()
+        g.remove_edge('A', 'B')
+        self.assertEqual(['C', 'D'], g.data['A'])
+        self.assertEqual(['C'], g.data['B'])
+        self.assertFalse(g.adjacent('A', 'B'))
+        self.assertFalse(g.adjacent('B', 'A'))
+        self.assertEqual(['A', 'B'], g.data['C'])
+        self.assertEqual(['A'], g.data['D'])
 
-    # """
-    # Properties
-    # """
+    """
+    Properties
+    """
 
-    # def test_v(self):
-    #     """
-    #     Test 29: |V| is the number of vertices in a graph.
-    #     """
-    #     g = Graph()
-    #     g.add_vertex('A')
-    #     self.assertEqual(1, g.v())
-    #     g.add_vertex('B')
-    #     g.add_vertex('C')
-    #     self.assertEqual(3, g.v())
+    def test_v(self):
+        """
+        Test 29: |V| is the number of vertices in a graph.
+        """
+        g = Graph()
+        g.add_vertex('A')
+        self.assertEqual(1, g.v())
+        g.add_vertex('B')
+        g.add_vertex('C')
+        self.assertEqual(3, g.v())
 
-    # def test_e(self):
-    #     """
-    #     Test 30: |E| is the number of edges in a graph.
-    #     Hint: There's an easy way - read or look it up?
-    #     Bonus: Try reduce.
-    #     """
-    #     g = larger_graph()
-    #     self.assertEqual(4, g.e())
-    #     g.add_edge('D', 'B')
-    #     self.assertEqual(5, g.e())
+    def test_e(self):
+        """
+        Test 30: |E| is the number of edges in a graph.
+        Hint: There's an easy way - read or look it up?
+        Bonus: Try reduce.
+        """
+        g = larger_graph()
+        self.assertEqual(4, g.e())
+        g.add_edge('D', 'B')
+        self.assertEqual(5, g.e())
 
 
 def larger_graph():
