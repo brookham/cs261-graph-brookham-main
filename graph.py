@@ -7,6 +7,7 @@
 # TIME SPENT: 
 
 import functools
+from functools import reduce
 
 class Graph:
     def __init__(self):
@@ -51,7 +52,6 @@ class Graph:
                 self.data[vert2].append(vert1)
             if vert2 not in self.data[vert1]:
                 self.data[vert1].append(vert2)
-
         else:
             pass
 
@@ -66,4 +66,5 @@ class Graph:
         return len(self.data)
     
     def e(self):
-        
+       edge_count = reduce(lambda x, y: x + len(y), self.data.values(), 0) 
+       return edge_count // 2
